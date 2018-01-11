@@ -1,0 +1,23 @@
+{
+  "name": "tools",
+  "version": "0.0.1",
+  "description": "Codemods and management tools for the generator and repos",
+  "main": "lib/",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bowlerjs/tools.git"
+  },
+  "keywords": [
+    "bowler",
+    "tooling"
+  ],
+  "author": "Mikael Pettersson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bowlerjs/tools/issues"
+  },
+  "homepage": "https://github.com/bowlerjs/tools#readme"
+}
