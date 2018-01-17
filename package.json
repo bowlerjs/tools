@@ -2,13 +2,33 @@
   "name": "tools",
   "version": "0.0.1",
   "description": "Codemods and management tools for the generator and repos",
+  "bin": {
+    "convert-repository": "./bin/convert-repository"
+  },
   "main": "lib/",
   "scripts": {
-    "test": "jest"
+    "publish": "git push origin --tags && npm run changelog && git push origin",
+    "release:pre": "npm version prerelease && npm publish --tag pre  --access public",
+    "release:patch": "npm version patch && npm publish --access public",
+    "release:minor": "npm version minor && npm publish --access public",
+    "release:major": "npm version major && npm publish --access public",
+    "changelog": "github_changelog_generator && git add CHANGELOG.md && git commit -am \"Updating changelog\"",
+    "lint": "semistandard lib/*.js lib/**/*.js test/*.js test/**/*.js --fix",
+    "jest": "jest --no-cache",
+    "test": "npm run lint"
+  },
+  "semistandard": {
+    "sourceType": "module",
+    "env": [
+      "jest"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/bowlerjs/tools.git"
+  },
+  "directories": {
+    "lib": "lib"
   },
   "keywords": [
     "bowler",
@@ -19,5 +39,17 @@
   "bugs": {
     "url": "https://github.com/bowlerjs/tools/issues"
   },
-  "homepage": "https://github.com/bowlerjs/tools#readme"
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "homepage": "https://github.com/bowlerjs/tools",
+  "devDependencies": {
+    "jest": "^22.0.5",
+    "semistandard": "^12.0.0"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "fs-extra": "^5.0.0",
+    "npm-programmatic": "^0.0.10"
+  }
 }
